@@ -25,20 +25,3 @@ class Diseñador extends Empleado
         return $this->tipo;
     }
 }
-
-/*
-if (php_sapi_name() == 'cli') {
-    $obj = new Diseñador(1, "Michelle", "Regert", 25, "Web");
-    echo $obj->getId();
-    echo "\n";
-    echo $obj->getNombre();
-    echo "\n";
-    echo $obj->getApellido();
-    echo "\n";
-    echo $obj->getEdad();
-    echo "\n";
-    echo $obj->getTipo();
-    echo "\n";
-    $obj->setTipo("Grafico");
-    echo $obj->getTipo();
-}*/
