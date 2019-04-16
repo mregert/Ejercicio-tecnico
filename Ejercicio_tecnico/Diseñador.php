@@ -1,6 +1,7 @@
 <?php
 
 require_once ('Empleado.php');
+
 class Diseñador extends Empleado
 {
     private $tipo;

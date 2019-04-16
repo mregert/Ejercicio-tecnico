@@ -1,6 +1,7 @@
 <?php
 
 require_once ('Empleado.php');
+
 class Programador extends Empleado
 {
     private $lenguaje;
