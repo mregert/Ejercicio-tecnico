@@ -1,5 +1,7 @@
 <?php
-
+require_once 'Empleado.php';
+require_once 'Diseñador.php';
+require_once 'Programador.php';
 
 class Empresa
 {
@@ -21,17 +23,17 @@ class Empresa
         $this->nombre = $nombre;
     }
 
-    public function setEmpleados($empleados)
+    public function setEmpleados(Empleado $empleados)
     {
         $this->empleados = $empleados;
     }
 
     /** GETTERS */
 
-   /* public function getId()
+    public function getId()
     {
         return $this->id;
-    }*/
+    }
 
     public function getNombre()
     {
@@ -46,19 +48,29 @@ class Empresa
     public function getEmpleado($id)
     {
         $length = sizeof($this->empleados);
-        for ($i = 0; i < $length; $i++){
+        for ($i = 0; $i < $length; $i++){
             $empleado = $this->empleados[$i];
-            if ($empleado == $id) {
+            if ($empleado->getId() == $id) {
                 return $empleado;
             }
         }
         return null;
     }
 
+    public function getPromedioEdad()
+    {
+        $length = sizeof($this->empleados);
+        $suma = 0;
+        for ($i = 0; $i < $length; $i++)
+            $suma = $suma + $this->empleados[$i]->getEdad();
+        return $suma/$length;
+    }
+
     /** ADD */
 
     public function addEmpleado($empleado)
     {
-        array_push($empleados, $empleado);
+        array_push($this->empleados, $empleado);
+        return 0;
     }
 }
