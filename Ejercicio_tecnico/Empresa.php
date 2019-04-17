@@ -28,11 +28,6 @@ class Empresa
         $this->nombre = $nombre;
     }
 
-    public function setEmpleados(Empleado $empleados)
-    {
-        $this->empleados = $empleados;
-    }
-
     /** GETTERS */
 
     public function getId()
