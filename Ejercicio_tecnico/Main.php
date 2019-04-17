@@ -22,7 +22,7 @@ class Main
         $empresa->addEmpleado($empleado3);
         $empresa->addEmpleado($empleado4);
 
-        /** EMPLEADO */
+        /** EMPLEADOS */
 
         $Empleado = $empresa->getEmpleado(2);
         $Empleado->addLenguaje(".NET");
@@ -33,12 +33,12 @@ class Main
         echo "\n";
 
         $arrayEmpleados = $empresa->getEmpleados();
-        $lenght = sizeof($arrayEmpleados);
         echo "EMPLEADOS \n";
-        for ($i = 0; $i < $lenght; $i ++){
-            echo $arrayEmpleados[$i]->getNombre();
+        foreach ($arrayEmpleados as $empleado)
+        {
+            echo $empleado->getNombre();
             echo " ";
-            echo $arrayEmpleados[$i]->getApellido();
+            echo $empleado->getApellido();
             echo "\n";
         }
 
@@ -46,6 +46,8 @@ class Main
         echo "PROMEDIO EDAD \n";
         echo $empresa->getPromedioEdad();
         echo "\n\n";
+
+        /** EMPRESA */
 
         echo "EMPRESA \n";
         $empresaId = $empresa->getId();
