@@ -6,27 +6,30 @@ class Main
 {
     function __construct()
     {
-    }
+    }                                                            
 
     function main() {
-        /**Empresa*/
 
-        $empleado1 = new Diseniador(1, "Juan", "Segura", 30, "Grafico");
-        $empleado2 = new Programador(2, "Felix", "Regert", 20, "Python");
-        $empleado3 = new Programador(3, "Michelle", "Regert", 25, "Java");
-        $empleado4 = new Diseniador(4, "Juana", "Regert", 30, "Web");
+        $empleado1 = new Diseñador(1, "Beau", "Hammond", 30, "Grafico");
+        $empleado2 = new Programador(2, "Maris", "Barker", 20, $lenguaje[] = "Python");
+        $empleado3 = new Programador(3, "Guy", "Duke", 25, $lenguaje[] = ".NET");
+        $empleado4 = new Diseñador(4, "Aline", "Trujillo", 30, "Web");
 
-        $empleados =array();
-        array_push( $empleados, $empleado1, $empleado2);
+        $empresa = new Empresa(1, "Summa");
 
-        $empresa = new Empresa(1, "Summa", $empleados);
-
+        $empresa->addEmpleado($empleado1);
+        $empresa->addEmpleado($empleado2);
         $empresa->addEmpleado($empleado3);
         $empresa->addEmpleado($empleado4);
 
-        $Empleado = $empresa->getEmpleado(1);
-        echo "GET EMPLEADO \n";
-        echo ($Empleado->getNombre());
+        /** EMPLEADO */
+
+        $Empleado = $empresa->getEmpleado(2);
+        $Empleado->addLenguaje(".NET");
+        echo "EMPLEADO id \n";
+        $lenguajes = $Empleado->getLenguajes();
+        foreach ($lenguajes as $lenguaje)
+            echo ("$lenguaje \n");
         echo "\n";
 
         $arrayEmpleados = $empresa->getEmpleados();
@@ -39,13 +42,18 @@ class Main
             echo "\n";
         }
 
+        echo "\n";
+        echo "PROMEDIO EDAD \n";
+        echo $empresa->getPromedioEdad();
+        echo "\n\n";
+
         echo "EMPRESA \n";
         $empresaId = $empresa->getId();
-        echo ($empresaId);
+        echo ("Id: $empresaId");
         echo "\n";
 
         $empresaNombre = $empresa->getNombre();
-        echo ($empresaNombre);
+        echo ("Nombre: $empresaNombre");
 
         return 0;
     }

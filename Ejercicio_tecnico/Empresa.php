@@ -8,13 +8,17 @@ class Empresa
 {
     private $id;
     private $nombre;
-    private $empleados;
+    private $empleados = array();
 
-    function __construct($id, $nombre, $empleados)
+    function __construct($id, $nombre)
     {
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->empleados = $empleados;
+    }
+
+    function __destruct()
+    {
+        unset($this->empleados[0]);
     }
 
     /** SETTERS */
@@ -48,23 +52,24 @@ class Empresa
 
     public function getEmpleado($id)
     {
-        $length = sizeof($this->empleados);
-        for ($i = 0; $i < $length; $i++){
-            $empleado = $this->empleados[$i];
-            if ($empleado->getId() == $id) {
-                return $empleado;
-            }
+        foreach ($this->empleados as $empleado)
+        if ($empleado->getId() == $id)
+        {
+            return $empleado;
         }
+
         return null;
     }
 
     public function getPromedioEdad()
     {
-        $length = sizeof($this->empleados);
         $suma = 0;
-        for ($i = 0; $i < $length; $i++)
-            $suma = $suma + $this->empleados[$i]->getEdad();
-        return $suma/$length;
+        foreach ($this->empleados as $empleado)
+        {
+            $suma = $suma + $empleado->getEdad();
+
+        }
+        return $suma/sizeof($this->empleados);
     }
 
     /** ADD */
@@ -72,6 +77,5 @@ class Empresa
     public function addEmpleado($empleado)
     {
         array_push($this->empleados, $empleado);
-        return 0;
     }
 }

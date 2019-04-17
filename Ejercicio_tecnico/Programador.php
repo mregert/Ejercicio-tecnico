@@ -4,24 +4,24 @@ require_once ('Empleado.php');
 
 class Programador extends Empleado
 {
-    private $lenguaje;
+    private $lenguajes = array();
 
     public function __construct($id, $nombre, $apellido, $edad, $lenguaje)
     {
         parent::__construct($id, $nombre, $apellido, $edad);
-        $this->lenguaje = $lenguaje;
+        array_push($this->lenguajes, $lenguaje);
     }
 
     /** SETTERS */
-    public function setLenguaje($lenguaje)
+    public function addLenguaje($lenguaje)
     {
-        $this->lenguaje = $lenguaje;
+        array_push($this->lenguajes, $lenguaje);
     }
 
     /** GETTERS*/
 
-    public function getLenguaje()
+    public function getLenguajes()
     {
-        return $this->lenguaje;
+        return $this->lenguajes;
     }
 }
