@@ -12,7 +12,8 @@ class Programador extends Empleado
         array_push($this->lenguajes, $lenguaje);
     }
 
-    /** SETTERS */
+    /** ADD */
+
     public function addLenguaje($lenguaje)
     {
         array_push($this->lenguajes, $lenguaje);
